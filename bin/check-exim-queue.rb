@@ -14,6 +14,10 @@
 # DEPENDENCIES:
 #   gem: sensu-plugin
 #
+# USAGE:
+#   ./check-exim-queue.rb [-p path_to_exim] -w warn -c crit
+#   ./check-exim-queue.rb -w 500 -c 1000
+#   ./check-exim-queue.rb -p /usr/local/bin/exim -w 500 -c 1000
 
 require 'sensu-plugin/check/cli'
 require 'open3'
