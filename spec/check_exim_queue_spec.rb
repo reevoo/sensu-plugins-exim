@@ -49,14 +49,14 @@ RSpec.describe 'check-exim-queue.rb', type: :aruba do
     end
   end
 
-  context 'permission error' do
-    let(:args) { "-w 11 -c 15 -p #{bindir}/permission_err" }
+  context 'exim error' do
+    let(:args) { "-w 11 -c 15 -p #{bindir}/error" }
 
     it 'returns a warning' do
       expect(last_command_started).to_not be_successfully_executed
-      expect(last_command_started.exit_status).to be 2
+      expect(last_command_started.exit_status).to be 3
       expect(last_command_started).to have_output(
-        /Check failed to run: Permission denied/
+        'SensuPluginsExim::CheckCLI UNKNOWN: Sad Exim :('
       )
     end
   end
